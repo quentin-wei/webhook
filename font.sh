@@ -14,4 +14,4 @@ echo "停止旧容器 并删除旧容器"
 docker stop font-container
 docker rm font-container
 echo "启动新容器"
-docker container run -p 80:80 --name font-container -d font:1.0
+docker container run -p 5000:5000 --name font-container -d font:1.0
