@@ -39,19 +39,10 @@ let server = http.createServer(function (req, res) {
 
             //自动化部署
             if(event == 'push'){
-				console.log("hello world2");
 				
-				console.log("1", body);
-				console.log("2",decodeURIComponent(body));
-				console.log("3",JSON.parse(body));
-				
-				return;
-				
-				//console.log("decodeURIComponent(JSON.parse)", decodeURIComponent(JSON.parse(body)));
-				
-				//let payload = decodeURIComponent(JSON.parse(body));  // 需要解码 再将string转化为json 不解码 转换会失败
-				
-				//console.log("typeof",typeof payload);
+				let payload = decodeURIComponent(body);  // 需要解码 再将string转化为json 不解码 转换会失败
+				console.log(payload);
+				console.log("typeof",typeof payload);
 				
                 let name = './'+payload.repository.name+'.sh'
 				
