@@ -40,9 +40,9 @@ let server = http.createServer(function (req, res) {
             //自动化部署
             if(event == 'push'){
 				
-				let payload = decodeURIComponent(body);  // 需要解码 再将string转化为json 不解码 转换会失败
-				console.log(payload);
-				console.log("typeof",typeof payload);
+				let bodyStr = decodeURIComponent(body);  // 需要解码 再将string转化为json 不解码 转换会失败
+				
+				let payload = JSON.parse(bodyStr);
 				
                 let name = './'+payload.repository.name+'.sh'
 				
