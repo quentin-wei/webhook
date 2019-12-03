@@ -2,7 +2,7 @@ let http = require('http');
 let cryto = require('crypto');
 let {spawn} = require('child_process'); //开启部署的子进程
 
-let SECRET = '123456';  //与在前后端项目github中设置的Secret相同
+let SECRET = '785132';  //与在前后端项目github中设置的Secret相同
 //生成签名算法
 //根据SECRET字符串使用哈希算法生成十六进制的新的字符串
 function sign(body) {
