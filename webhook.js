@@ -41,8 +41,10 @@ let server = http.createServer(function (req, res) {
             if(event == 'push'){
 				
 				let bodyStr = decodeURIComponent(body);  // 需要解码 再将string转化为json 不解码 转换会失败
+				console.log(bodyStr);
 				
 				let payload = JSON.parse(bodyStr);
+				console.log(typeof payload);
 				
                 let name = './'+payload.repository.name+'.sh'
 				
