@@ -38,8 +38,9 @@ let server = http.createServer(function (req, res) {
 
             //自动化部署
             if(event == 'push'){
-				console.log("body",body);
-                let payload = JSON.parse(body);
+				let bufStr = body.toString(); 
+                let payload = JSON.parse(bufStr);
+				console.log("payload",payload);
                 let name = './'+payload.repository.name+'.sh'
 				
                 //开启子进程自动执行对应的sh部署脚本，提交back就执行 sh back.sh 的子进程
