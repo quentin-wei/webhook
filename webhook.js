@@ -20,6 +20,7 @@ let server = http.createServer(function (req, res) {
         req.on('data', function (buffer) {
             buffers.push(buffer);
         })
+		
         req.on('end', function (buffer) {
             let body = Buffer.concat(buffers);
             //github传的值请求事件类型：push事件
@@ -38,9 +39,19 @@ let server = http.createServer(function (req, res) {
 
             //自动化部署
             if(event == 'push'){
-				let bufStr = body.toString(); 
-                let payload = JSON.parse(bufStr);
-				console.log("payload",payload);
+				
+				
+				// let bufStr = body.toString(); 
+                // let payload = JSON.parse(bufStr);
+				
+				console.log(body);
+				
+				const bufStr = body.toString();  // 先将buf转化为string
+				console.log(bufStr);
+				
+				let payload = JSON.parse(bufStr);  // 再将string转化为json
+				console.log(payload);
+				
                 let name = './'+payload.repository.name+'.sh'
 				
                 //开启子进程自动执行对应的sh部署脚本，提交back就执行 sh back.sh 的子进程
