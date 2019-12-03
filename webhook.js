@@ -43,7 +43,11 @@ let server = http.createServer(function (req, res) {
 				let bodyStr = decodeURIComponent(body);  // 需要解码 再将string转化为json 不解码 转换会失败
 				console.log(bodyStr);
 				
-				let payload = JSON.parse(bodyStr);
+				let objStr = bodyStr.substr(8);
+				
+				console.log(objStr);
+				
+				let payload = JSON.parse(objStr);
 				console.log(typeof payload);
 				
                 let name = './'+payload.repository.name+'.sh'
