@@ -11,9 +11,8 @@ function sign(body) {
 let server = http.createServer(function (req, res) {
     //判断github发送的是不是post 是不是webhook发送的请求
     console.log('检测到前端后端代码更新，github发来的请求信息如下：')
-    console.log('req----hedaers')
-    console.log(req.headers['x-github-event'])
-    console.log(req.method, req.url);
+    // console.log(req.headers['x-github-event'])
+    // console.log(req.method, req.url);
     if (req.method == 'POST' && req.url == '/webhook') {
         //拿到github传递过来的参数--对请求的github进行简单的验证
         let buffers = [];
@@ -41,14 +40,13 @@ let server = http.createServer(function (req, res) {
             if(event == 'push'){
 				
 				let bodyStr = decodeURIComponent(body);  // 需要解码 再将string转化为json 不解码 转换会失败
-				console.log(bodyStr);
+				// console.log(bodyStr);
 				
 				let objStr = bodyStr.substr(8);
 				
 				console.log(objStr);
 				
 				let payload = JSON.parse(objStr);
-				console.log(typeof payload);
 				
                 let name = './'+payload.repository.name+'.sh'
 				
@@ -63,7 +61,6 @@ let server = http.createServer(function (req, res) {
                 })
                 child.stdout.on('end',function(buffer){
                     let log = Buffer.concat(buffers)
-                    console.log('log')
                     console.log(log)
                 })
 
